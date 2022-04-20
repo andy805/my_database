@@ -1,0 +1,35 @@
+.masterDetail {
+    border-right: 1px solid var(--fmsp-light-gray);
+    grid-column: 1/2;
+    grid-row: 2/3;
+    overflow-y: auto;
+    width: 278px;
+    padding-right: 15px;
+}
+
+.masterDetail__bottomMenu {
+    display: grid;
+    grid-template-columns: 35px 188px 33px 10px;
+    align-items: center;
+    padding: 10px 0 10px;
+}
+
+.masterDetail__topMenu {
+    display: flex;
+    align-items: center;
+    padding: 12px 12px 0 12px;
+}
+
+.masterDetail__record {
+    padding: 7px 25px 0 0;
+    color: #9a9a9a;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+svg[data-icon="circle-notch"] {
+    color: var(--fmsp-blue);
+    margin-left: 12px;
+    font-size: 18px;
+}

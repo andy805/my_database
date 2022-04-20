@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {Routes, Route, Link} from "react-router-dom";
 
-import {ButtonAppBar} from './components/Navigation';
+import {ButtonAppBar} from './components/Navigation.js';
+import InterviewQuestions from './pages/InterviewQuestions.js';
 
 function App() {
   return (
@@ -12,8 +13,7 @@ function App() {
 
 
       <Routes>
-        <Route path="interviewQuestions" element={<h1>InterviewQuestions</h1>}>
-        </Route>
+        <Route path="interviewQuestions" element={<InterviewQuestions/>} />
 
         <Route path="/" element={<h1>HOME</h1>}> 
         </Route>
