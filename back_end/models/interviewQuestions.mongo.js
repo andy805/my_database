@@ -16,6 +16,13 @@ const interviewQuestionsSchema = new mongoose.Schema({
     flag_delete: Boolean,
     date_created: {type: Date, default: Date.now},
     date_modified: Date,
-    time_created: {type: Number, default: Date.now.getTime()},
-    time_modified: Number
-}, {timestamps: {createdAt: 'timestamp_creation', updatedAt: 'timestamp_modified'}})
+    time_created: {type: Number, default: Date.now},
+    time_modified: Number,
+    attempts: [mongoose.Schema.Types.Mixed]
+
+}, {timestamps: {createdAt: 'timestamp_creation', updatedAt: 'timestamp_modified'}});
+
+//connects interviewQuestionsSchema with the 'interviewQuestions' collection
+//note that first argument should be in singlar not plural
+export const interviewQuestionModel =  mongoose.model('InterviewQuestion', interviewQuestionsSchema); //this is called compiling the model
+//we created an object that will now allows us to read and create documents
