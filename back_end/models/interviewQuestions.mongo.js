@@ -24,5 +24,5 @@ const interviewQuestionsSchema = new mongoose.Schema({
 
 //connects interviewQuestionsSchema with the 'interviewQuestions' collection
 //note that first argument should be in singlar not plural
-export const interviewQuestionModel =  mongoose.model('InterviewQuestion', interviewQuestionsSchema); //this is called compiling the model
+export const interviewQuestionModel =  mongoose.model('Interview Question', interviewQuestionsSchema); //this is called compiling the model
 //we created an object that will now allows us to read and create documents

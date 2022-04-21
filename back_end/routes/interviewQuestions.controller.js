@@ -2,7 +2,11 @@ import { interviewQuestionModel } from "../models/interviewQuestions.mongo.js";
 import { getAllInterviewQuestions,  addNewQuestion} from "../models/interviewQuestions.model.js";
 
 export async function httpGetAllInterviewQuestions(req, res) {
-    return res.status(200).json(getAllInterviewQuestions());
+
+    const allQuestions =  await getAllInterviewQuestions();
+    console.log('\n\ntest test \n ');
+    console.log(allQuestions);
+    return  res.status(200).json(allQuestions);
 }
 
 export async function httpCreateInterviewQuestion(req, res) {
