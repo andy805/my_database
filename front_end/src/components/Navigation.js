@@ -97,10 +97,19 @@ export  function ButtonAppBar() {
             </ListItemIcon>
             <ListItemText primary="Interview Questions" />
         </ListItemButton>
-
         <ListItemButton
             selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1, '/timeSheets')}
+            onClick={(event) => handleListItemClick(event, 1, '/jobApplications')}
+            >
+            <ListItemIcon>
+                <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Job Applications" />
+        </ListItemButton>
+
+        <ListItemButton
+            selected={selectedIndex === 3}
+            onClick={(event) => handleListItemClick(event, 3, '/timeSheets')}
             >
             <ListItemIcon>
                 <InboxIcon />
@@ -109,8 +118,8 @@ export  function ButtonAppBar() {
         </ListItemButton>
 
         <ListItemButton
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2, '/finance')}
+            selected={selectedIndex === 4}
+            onClick={(event) => handleListItemClick(event, 4, '/finance')}
             >
             <ListItemIcon>
                 <InboxIcon />
@@ -119,8 +128,8 @@ export  function ButtonAppBar() {
         </ListItemButton>
 
         <ListItemButton
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3, '/journal')}
+            selected={selectedIndex === 5}
+            onClick={(event) => handleListItemClick(event, 5, '/journal')}
             >
             <ListItemIcon>
                 <InboxIcon />
