@@ -98,9 +98,9 @@ const InterviewQuestions = () => {
                     mainLabel={masterRecord.question}
                     // mainLabel={createMainLabel(masterRecord, mainLabel)}
                     phone1={masterRecord.__V}
-                    // state={
-                    //     index === masterRecords.active ? "active" : "inactive"
-                    // }
+                    state={
+                        index === activeDocumentIndex ? "active" : "inactive"
+                    }
                     rowNumber={Number(index)}
                     cardClick={setActiveDocumentIndex}
                 />
