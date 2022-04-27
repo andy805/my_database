@@ -29,14 +29,8 @@ export async function addNewQuestion() {
 
     });
 
-    let test = await newDocument.save(function (err) {
-        if(err){
-            console.log('error');
-            console.log(err);
-            return -1;
-        }
-    });
-
+    let test = await newDocument.save()
+    console.log(`test ${test}`);
     return test;
 
     
@@ -57,13 +51,9 @@ export async function updateQuestion(id, body) {
     try{
         const docQuestion = await interviewQuestionModel.findById(String(id));
         docQuestion.question = body.question;
-        docQuestion.save().then((err) => {
-            if(err) {
-                console.log(err)
-                return;
-            }
-        });    
-    }
+        let saveDoc = await docQuestion.save();
+        return saveDoc;
+        }
     catch(err) {
         console.log(`could not find question with id: ${id}`);
         return {error: -1, 
@@ -71,4 +61,14 @@ export async function updateQuestion(id, body) {
     }
 
     
+}
+
+export async function deleteQuestion(id) {
+
+    try {
+        let result = await interviewQuestionModel.deleteOne({_id: id})
+        return result;
+    }catch(err) {
+        return {error: true, errorDescription: 'unable to delete'};
+    }
 }
