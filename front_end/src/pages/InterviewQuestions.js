@@ -43,20 +43,38 @@ const InterviewQuestions = () => {
     
     function handleChangeQuestion(e) {
         // make a shallow copy of the questions array
-        let currQuestions = [...questions];
+        let currQuestionsArray = [...questions];
         //make a shallow copy of the active questions
         let currQuestion = {...questions[activeDocumentIndex]};
         currQuestion.question = e.target.value;
-        currQuestions[activeDocumentIndex] = currQuestion
-        setQuestions(currQuestions)
+        currQuestionsArray[activeDocumentIndex] = currQuestion
+        setQuestions((lastQuestions) =>  currQuestionsArray)
         setOnSave(true);
     }
 
     function handleOnSave(e, currIndex) {
 
         if(onSave) {
+            let id = questions[currIndex]._id;
+            let data = JSON.stringify(questions[currIndex]);
             /* post to database */
-            onSave(false);
+            fetch(url + '/' + id, {
+                method: "PUT",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: data
+            })
+            .then((res) => res.json())
+            .then((body) => {
+                let currQuestions = [...questions];
+                currQuestions[currIndex] = body;
+                setQuestions(currQuestions)
+            })
+            .catch((err) => {
+                // TO DO GIVE FEEDBACK TO USER
+            })
+            setOnSave(false);
         }
         else {
 
@@ -114,7 +132,9 @@ const InterviewQuestions = () => {
                     rows={5}
                     sx={{width: 300}}
                     value={questions[activeDocumentIndex].question}
-                    onBlur={handleOnSave}
+                    onBlur={ (e) => {
+                        handleOnSave(e, activeDocumentIndex)
+                        }}
                     onChange={handleChangeQuestion}
                     
                 />

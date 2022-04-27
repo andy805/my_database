@@ -1,5 +1,5 @@
 import { interviewQuestionModel } from "../models/interviewQuestions.mongo.js";
-import { getAllInterviewQuestions,  addNewQuestion, updateQuestion} from "../models/interviewQuestions.model.js";
+import { getAllInterviewQuestions,  addNewQuestion, updateQuestion, deleteQuestion} from "../models/interviewQuestions.model.js";
 
 export async function httpGetAllInterviewQuestions(req, res) {
 
@@ -34,6 +34,7 @@ export async function httpCreateInterviewQuestion(req, res) {
 
 export async function httpUpdateQuestion(req, res) {
     console.log(req.params);
+    console.log('below is the body');
     console.log(req.body);
     let params = req.params;
     let question = req.body;
@@ -47,6 +48,20 @@ export async function httpUpdateQuestion(req, res) {
         })
     }
     else {
-        return res.status(200).json(question);
+        return res.status(200).json(findResult);
     }
+}
+
+export async function httpDeleteQuestion(req, res) {
+
+    let result = deleteQuestion(req.body._id);
+    if(result) {
+        return res.status(200).json({
+            success: true
+        })
+    }
+    else {
+        return res.status(404).json(result)
+    }
+
 }

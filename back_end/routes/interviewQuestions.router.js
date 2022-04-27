@@ -9,5 +9,6 @@ const interviewQuestionsRouter = express.Router();
 interviewQuestionsRouter.get('/', httpGetAllInterviewQuestions);
 interviewQuestionsRouter.post('/', httpCreateInterviewQuestion);
 interviewQuestionsRouter.put('/:questionId', httpUpdateQuestion);
+interviewQuestionsRouter.delete('/', 'function from controller')
 
 export default interviewQuestionsRouter
