@@ -1,5 +1,10 @@
-front_end/public
+front_end/public/favicon.ico
+front_end/public/logo192.png
+front_end/public/logo512.png
+front_end/public/manifest.json
+front_end/public/robots.txt
 
 /public
 
 README.md
+back_end/server.js

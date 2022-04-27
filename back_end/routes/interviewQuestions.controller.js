@@ -1,5 +1,5 @@
 import { interviewQuestionModel } from "../models/interviewQuestions.mongo.js";
-import { getAllInterviewQuestions,  addNewQuestion} from "../models/interviewQuestions.model.js";
+import { getAllInterviewQuestions,  addNewQuestion, updateQuestion} from "../models/interviewQuestions.model.js";
 
 export async function httpGetAllInterviewQuestions(req, res) {
 
@@ -10,15 +10,43 @@ export async function httpGetAllInterviewQuestions(req, res) {
 }
 
 export async function httpCreateInterviewQuestion(req, res) {
-    const question = req.body;
-    if(!question.question){
+    // const question = req.body;
+    // if(!question.question){
+    //     return res.status(400).json({
+    //         error: "missing required interview question properties"
+    //     })
+    // }
+
+    let result = await addNewQuestion();
+    console.log('test');
+    console.log(result);
+    if(result && result === -1){
         return res.status(400).json({
-            error: "missing required interview question properties"
+            error: "failed to create an empty document"
         })
+
     }
 
-    addNewQuestion(question);
+    return res.status(201).json(result);
     // interviewQuestionModel.create(question);
 
-    return res.status(201).json(question);
+}
+
+export async function httpUpdateQuestion(req, res) {
+    console.log(req.params);
+    console.log(req.body);
+    let params = req.params;
+    let question = req.body;
+
+    let findResult = await updateQuestion(String(params.questionId), question);
+    console.log(findResult);
+
+    if(findResult && findResult.error === -1) {
+        return res.status(404).json({
+            error: "ID Not Found"
+        })
+    }
+    else {
+        return res.status(200).json(question);
+    }
 }
