@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 // import Card from "./Card";
-import styles from "./MasterDetailRow.module.css";
+import styles from "./MasterDetailRow.module.scss";
 
 const MasterDetailRow = ({status, headerLabel, mainLabel, phone1, state, rowNumber, setPortalRowState, cardClick}) => {
 
