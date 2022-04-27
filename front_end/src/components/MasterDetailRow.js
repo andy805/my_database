@@ -19,6 +19,7 @@ const MasterDetailRow = ({status, headerLabel, mainLabel, phone1, state, rowNumb
 
     const rowOnClickHandler = (ev) => {
         cardClick(rowNumber);
+        setActiveRow("active")
         console.log(rowNumber)
     }
 
