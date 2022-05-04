@@ -106,7 +106,7 @@ const InterviewQuestions = () => {
 
         <div className={style.mainContainer}>
             <Button onClick={handleAddNewQuestion}> Add new Question</Button>
-            <div className={style.container}>
+            <div className={style.MasterDetailContainer}>
                 {display && questions.map((masterRecord, index) => (
                 <MasterDetailRow
                     key={masterRecord._id}
