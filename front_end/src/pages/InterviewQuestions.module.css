@@ -6,10 +6,17 @@
     height: 80%;
 }
 
+.MasterDetailContainer {
+    overflow: scroll;
+    height: 100%;
+}
+
 .mainContainer {
     display: flex;
     flex-direction: row;
-
+    position: fixed;
+    bottom: 0;
+    top: 144.867px;
 }
 
 .masterDetail {
